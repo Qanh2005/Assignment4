@@ -46,8 +46,8 @@ async function seedDatabase() {
       {
         quiz: sampleQuiz._id,
         text: "What is the capital of Germany?",
-        options: ["Munich", "Berlin", "Frankfurt", "Hamburg"],
-        correctAnswer: 1,
+        options: ["Paris", "London", "Berlin", "Madrid"],
+        correctAnswer: 2,
       },
       {
         quiz: sampleQuiz._id,
