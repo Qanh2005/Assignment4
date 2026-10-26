@@ -1,10 +1,14 @@
-require("dotenv").config();
-var express = require("express");
 var path = require("path");
+require("dotenv").config({ path: path.join(__dirname, ".env") });
+var express = require("express");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
 var mongoose = require("mongoose");
+var dns = require("dns");
+try {
+  dns.setServers(["8.8.8.8", "1.1.1.1"]);
+} catch (e) {}
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");

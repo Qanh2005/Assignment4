@@ -1,0 +1,12 @@
+{
+  "name": "quiz-app-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix backend install",
+    "start": "npm --prefix backend start"
+  },
+  "dependencies": {
+    "mongodb": "^7.7.0"
+  }
+}
