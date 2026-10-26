@@ -18,20 +18,26 @@ const persist = (token, user) => {
 export const login = createAsyncThunk("auth/login", async (credentials, { rejectWithValue }) => {
   try {
     const { data } = await api.post("/auth/login", credentials);
+    if (!data || !data.token) {
+      return rejectWithValue("Invalid response from server");
+    }
     persist(data.token, data.user);
     return data;
   } catch (err) {
-    return rejectWithValue(err.response?.data?.message || "Login failed");
+    return rejectWithValue(err.response?.data?.message || err.message || "Login failed");
   }
 });
 
 export const register = createAsyncThunk("auth/register", async (credentials, { rejectWithValue }) => {
   try {
     const { data } = await api.post("/auth/register", credentials);
+    if (!data || !data.token) {
+      return rejectWithValue("Invalid response from server");
+    }
     persist(data.token, data.user);
     return data;
   } catch (err) {
-    return rejectWithValue(err.response?.data?.message || "Registration failed");
+    return rejectWithValue(err.response?.data?.message || err.message || "Registration failed");
   }
 });
 
